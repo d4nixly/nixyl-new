@@ -13,246 +13,560 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: #090909;
-      color: #f5f2ed;
+      background: #080808;
+      color: #f4f1eb;
       font-family: Arial, Helvetica, sans-serif;
       overflow-x: hidden;
     }
 
-    .hero {
-      min-height: 100vh;
-      position: relative;
-      padding: 28px 7%;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 75% 45%, rgba(180, 55, 25, 0.18), transparent 30%),
-        radial-gradient(circle at 20% 80%, rgba(255, 80, 30, 0.06), transparent 25%),
-        #090909;
-    }
-
-    /* NAV */
+    /* =========================
+       NAVIGATION
+    ========================= */
 
     nav {
-      height: 60px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 86px;
+      padding: 0 7%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: relative;
-      z-index: 10;
+      z-index: 20;
     }
 
     .logo {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 800;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.16em;
     }
 
     .nav-links {
       display: flex;
-      gap: 38px;
       align-items: center;
+      gap: 34px;
     }
 
     .nav-links a {
-      color: #aaa;
+      color: #a5a5a5;
       text-decoration: none;
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      transition: 0.25s;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      transition: 0.25s ease;
     }
 
     .nav-links a:hover {
-      color: white;
+      color: #fff;
     }
 
     .search {
-      width: 34px;
-      height: 34px;
-      border: 1px solid #333;
+      width: 35px;
+      height: 35px;
+      border: 1px solid #303030;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #aaa;
-      font-size: 14px;
+      font-size: 17px;
     }
 
-    /* HERO */
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 120px 7% 90px;
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 75% 45%,
+          rgba(180, 61, 27, 0.20),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 25% 90%,
+          rgba(255, 80, 30, 0.06),
+          transparent 30%
+        ),
+        #080808;
+    }
 
     .hero-content {
       position: relative;
       z-index: 5;
-      max-width: 620px;
-      padding-top: 17vh;
+      width: 55%;
+      max-width: 720px;
     }
 
     .eyebrow {
-      color: #e85a32;
+      color: #d85b32;
       font-size: 11px;
-      letter-spacing: 0.22em;
-      margin-bottom: 22px;
       font-weight: 700;
+      letter-spacing: 0.22em;
+      margin-bottom: 25px;
     }
 
-    h1 {
+    .hero h1 {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(55px, 7vw, 100px);
-      font-weight: 400;
+      font-size: clamp(58px, 7vw, 104px);
       line-height: 0.94;
-      letter-spacing: -0.055em;
+      font-weight: 400;
+      letter-spacing: -0.06em;
       max-width: 700px;
     }
 
-    .description {
-      color: #9d9d9d;
-      font-size: 16px;
-      line-height: 1.7;
+    .hero-description {
+      margin-top: 32px;
       max-width: 500px;
-      margin-top: 30px;
+      color: #999;
+      font-size: 16px;
+      line-height: 1.75;
     }
 
     .buttons {
       display: flex;
-      gap: 14px;
-      margin-top: 36px;
+      gap: 13px;
+      margin-top: 38px;
     }
 
     .button {
+      display: inline-block;
+      padding: 16px 22px;
       text-decoration: none;
-      padding: 15px 22px;
-      font-size: 11px;
-      letter-spacing: 0.12em;
+      font-size: 10px;
       font-weight: 700;
-      transition: 0.25s;
+      letter-spacing: 0.13em;
+      transition: 0.25s ease;
     }
 
-    .primary {
-      background: #f0ece5;
+    .button-primary {
+      background: #eeeae3;
       color: #111;
     }
 
-    .primary:hover {
+    .button-primary:hover {
       background: white;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
-    .secondary {
-      border: 1px solid #393939;
+    .button-secondary {
+      border: 1px solid #3a3a3a;
       color: #ddd;
     }
 
-    .secondary:hover {
+    .button-secondary:hover {
       border-color: #777;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
-    /* RIGHT VISUAL */
+    /* =========================
+       HERO VISUAL
+    ========================= */
 
-    .visual {
+    .hero-visual {
       position: absolute;
-      width: 620px;
-      height: 620px;
-      right: 2%;
-      top: 17%;
+      width: 650px;
+      height: 650px;
+      right: -30px;
+      top: 50%;
+      transform: translateY(-50%);
       z-index: 2;
     }
 
-    .glow {
+    .visual-glow {
       position: absolute;
-      width: 420px;
-      height: 420px;
+      width: 440px;
+      height: 440px;
+      left: 100px;
+      top: 105px;
       border-radius: 50%;
-      background: rgba(200, 65, 25, 0.16);
-      filter: blur(80px);
+      background: rgba(190, 62, 25, 0.18);
+      filter: blur(85px);
+    }
+
+    .ring {
+      position: absolute;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 50%;
+    }
+
+    .ring-one {
+      width: 470px;
+      height: 470px;
+      left: 90px;
       top: 90px;
-      left: 100px;
     }
 
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.13);
-    }
-
-    .orb.one {
-      width: 400px;
-      height: 400px;
-      top: 100px;
-      left: 100px;
-    }
-
-    .orb.two {
-      width: 290px;
-      height: 290px;
-      top: 155px;
-      left: 155px;
+    .ring-two {
+      width: 350px;
+      height: 350px;
+      left: 150px;
+      top: 150px;
     }
 
     .trophy {
       position: absolute;
-      font-size: 150px;
-      top: 190px;
-      left: 220px;
-      filter: drop-shadow(0 25px 30px rgba(0,0,0,0.7));
+      left: 245px;
+      top: 205px;
+      font-size: 145px;
+      filter: drop-shadow(0 30px 25px rgba(0,0,0,0.8));
       transform: rotate(-8deg);
     }
 
     .coil {
       position: absolute;
-      font-size: 90px;
-      right: 65px;
-      bottom: 100px;
-      transform: rotate(15deg);
-      filter: drop-shadow(0 20px 25px rgba(0,0,0,0.7));
+      right: 70px;
+      bottom: 105px;
+      font-size: 82px;
+      filter: drop-shadow(0 25px 20px rgba(0,0,0,0.8));
+      transform: rotate(14deg);
     }
 
-    .label {
+    .visual-label {
       position: absolute;
-      bottom: 55px;
-      left: 0;
+      left: 20px;
+      bottom: 70px;
+      color: #555;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+    }
+
+    /* =========================
+       PLAY SECTION
+    ========================= */
+
+    .play-section {
+      position: relative;
+      padding: 150px 7% 170px;
+      background: #0d0d0d;
+      border-top: 1px solid #181818;
+    }
+
+    .section-eyebrow {
+      color: #d85b32;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      margin-bottom: 22px;
+    }
+
+    .play-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: clamp(45px, 6vw, 78px);
+      letter-spacing: -0.05em;
+      line-height: 0.98;
+      max-width: 800px;
+    }
+
+    .play-intro {
+      color: #888;
+      max-width: 570px;
+      font-size: 15px;
+      line-height: 1.8;
+      margin-top: 28px;
+    }
+
+    /* FINDER */
+
+    .finder {
+      margin-top: 80px;
+      max-width: 1050px;
+      border: 1px solid #292929;
+      background: #111;
+      padding: 45px;
+      position: relative;
+    }
+
+    .finder-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .finder-label {
+      font-size: 10px;
+      color: #666;
+      letter-spacing: 0.18em;
+      font-weight: 700;
+    }
+
+    .finder-status {
+      color: #d85b32;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .choice {
+      border: 1px solid #2b2b2b;
+      background: #0c0c0c;
+      padding: 28px 25px;
+      min-height: 130px;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .choice:hover {
+      border-color: #555;
+      transform: translateY(-3px);
+    }
+
+    .choice-small {
+      color: #666;
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      margin-bottom: 18px;
+    }
+
+    .choice-text {
+      color: #eee;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+    }
+
+    .finder-bottom {
+      margin-top: 28px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .find-button {
+      border: none;
+      background: #e9e5de;
+      color: #111;
+      padding: 17px 27px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .find-button:hover {
+      background: white;
+      transform: translateY(-3px);
+    }
+
+    /* =========================
+       QUICK PLAYS
+    ========================= */
+
+    .games-section {
+      padding: 130px 7% 160px;
+      background: #080808;
+    }
+
+    .games-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 50px;
+    }
+
+    .games-heading h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: clamp(40px, 5vw, 65px);
+      letter-spacing: -0.05em;
+    }
+
+    .games-heading p {
+      color: #666;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .game-card {
+      min-height: 310px;
+      border: 1px solid #222;
+      background: #101010;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: 0.3s ease;
+    }
+
+    .game-card:hover {
+      border-color: #444;
+      transform: translateY(-5px);
+    }
+
+    .game-number {
       color: #555;
       font-size: 10px;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.15em;
+      margin-bottom: auto;
     }
 
-    /* RESPONSIVE */
+    .game-card h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .game-card p {
+      color: #777;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .game-tags {
+      display: flex;
+      gap: 7px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      border: 1px solid #292929;
+      padding: 7px 9px;
+      color: #888;
+      font-size: 8px;
+      letter-spacing: 0.1em;
+    }
+
+    /* =========================
+       DEV HUB
+    ========================= */
+
+    .dev-section {
+      padding: 150px 7%;
+      background: #0d0d0d;
+      border-top: 1px solid #191919;
+    }
+
+    .dev-content {
+      max-width: 850px;
+    }
+
+    .dev-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: clamp(48px, 6vw, 82px);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .dev-description {
+      margin-top: 30px;
+      color: #888;
+      font-size: 15px;
+      line-height: 1.8;
+      max-width: 570px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 50px 7%;
+      border-top: 1px solid #1d1d1d;
+      background: #080808;
+      display: flex;
+      justify-content: space-between;
+      color: #555;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
 
     @media (max-width: 900px) {
-      .hero {
-        padding: 24px;
+
+      .hero-content {
+        width: 100%;
+      }
+
+      .hero-visual {
+        right: -330px;
+        opacity: 0.35;
+      }
+
+      .choices,
+      .game-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .finder {
+        padding: 28px;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      nav {
+        padding: 0 24px;
       }
 
       .nav-links {
         gap: 15px;
       }
 
-      .visual {
-        opacity: 0.3;
-        right: -220px;
-      }
-
-      .hero-content {
-        padding-top: 18vh;
-      }
-    }
-
-    @media (max-width: 600px) {
       .nav-links a:nth-child(3) {
         display: none;
       }
 
-      h1 {
-        font-size: 56px;
+      .hero {
+        padding-left: 24px;
+        padding-right: 24px;
       }
 
-      .description {
-        font-size: 14px;
+      .hero h1 {
+        font-size: 58px;
       }
 
       .buttons {
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      .finder-top {
+        align-items: flex-start;
+        gap: 15px;
+        flex-direction: column;
+      }
+
+      .play-section,
+      .games-section,
+      .dev-section {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      footer {
+        padding-left: 24px;
+        padding-right: 24px;
       }
     }
   </style>
@@ -260,50 +574,317 @@
 
 <body>
 
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
+
+  <nav>
+    <div class="logo">NIXYL</div>
+
+    <div class="nav-links">
+      <a href="#play">PLAY</a>
+      <a href="#dev">DEV HUB</a>
+      <a href="#discover">DISCOVER</a>
+      <div class="search">⌕</div>
+    </div>
+  </nav>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
   <section class="hero">
-
-    <nav>
-      <div class="logo">NIXYL</div>
-
-      <div class="nav-links">
-        <a href="#">PLAY</a>
-        <a href="#">DEV HUB</a>
-        <a href="#">DISCOVER</a>
-        <div class="search">⌕</div>
-      </div>
-    </nav>
 
     <div class="hero-content">
 
-      <div class="eyebrow">ROBLOX DISCOVERY</div>
+      <div class="eyebrow">
+        ROBLOX DISCOVERY
+      </div>
 
-      <h1>Find something worth playing.</h1>
+      <h1>
+        Find something worth playing.
+      </h1>
 
-      <p class="description">
+      <p class="hero-description">
         Stop scrolling through endless Roblox experiences.
         Tell NIXYL what you have time for, who you're playing with,
         and what kind of experience you want.
       </p>
 
       <div class="buttons">
-        <a href="#" class="button primary">EXPLORE NIXYL PLAY</a>
-        <a href="#" class="button secondary">EXPLORE DEV HUB</a>
+        <a href="#play" class="button button-primary">
+          EXPLORE NIXYL PLAY
+        </a>
+
+        <a href="#dev" class="button button-secondary">
+          EXPLORE DEV HUB
+        </a>
       </div>
 
     </div>
 
-    <div class="visual">
-      <div class="glow"></div>
-      <div class="orb one"></div>
-      <div class="orb two"></div>
+
+    <div class="hero-visual">
+
+      <div class="visual-glow"></div>
+
+      <div class="ring ring-one"></div>
+      <div class="ring ring-two"></div>
 
       <div class="trophy">🏆</div>
+
       <div class="coil">🌀</div>
 
-      <div class="label">DISCOVER · PLAY · BUILD</div>
+      <div class="visual-label">
+        DISCOVER · PLAY · BUILD
+      </div>
+
     </div>
 
   </section>
+
+
+  <!-- =========================
+       NIXYL PLAY
+  ========================= -->
+
+  <section class="play-section" id="play">
+
+    <div class="section-eyebrow">
+      NIXYL PLAY
+    </div>
+
+    <h2 class="play-title">
+      The art of playtime discovery.
+    </h2>
+
+    <p class="play-intro">
+      Tell us what your situation looks like.
+      NIXYL finds experiences that fit instead of
+      making you scroll through hundreds of games.
+    </p>
+
+
+    <div class="finder">
+
+      <div class="finder-top">
+
+        <div class="finder-label">
+          WHAT ARE YOU LOOKING FOR?
+        </div>
+
+        <div class="finder-status">
+          01 / 03
+        </div>
+
+      </div>
+
+
+      <div class="choices">
+
+        <div class="choice">
+          <div class="choice-small">
+            TIME
+          </div>
+
+          <div class="choice-text">
+            I have 20 minutes.
+          </div>
+        </div>
+
+
+        <div class="choice">
+          <div class="choice-small">
+            PLAYERS
+          </div>
+
+          <div class="choice-text">
+            I'm playing with 2 friends.
+          </div>
+        </div>
+
+
+        <div class="choice">
+          <div class="choice-small">
+            VIBE
+          </div>
+
+          <div class="choice-text">
+            I want something funny.
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="finder-bottom">
+
+        <button class="find-button">
+          FIND MY GAME →
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       QUICK PLAYS
+  ========================= -->
+
+  <section class="games-section" id="discover">
+
+    <div class="games-heading">
+
+      <div>
+        <div class="section-eyebrow">
+          QUICK PLAYS
+        </div>
+
+        <h2>
+          Worth your time.
+        </h2>
+      </div>
+
+      <p>
+        CURATED FOR YOUR NEXT SESSION
+      </p>
+
+    </div>
+
+
+    <div class="game-grid">
+
+      <div class="game-card">
+
+        <div class="game-number">
+          001
+        </div>
+
+        <h3>
+          Game One
+        </h3>
+
+        <p>
+          A quick experience for when you only
+          have a little time to play.
+        </p>
+
+        <div class="game-tags">
+          <span class="tag">10 MIN</span>
+          <span class="tag">FUNNY</span>
+          <span class="tag">MULTIPLAYER</span>
+        </div>
+
+      </div>
+
+
+      <div class="game-card">
+
+        <div class="game-number">
+          002
+        </div>
+
+        <h3>
+          Game Two
+        </h3>
+
+        <p>
+          Something chaotic to jump into
+          with your friends.
+        </p>
+
+        <div class="game-tags">
+          <span class="tag">20 MIN</span>
+          <span class="tag">CHAOS</span>
+          <span class="tag">FRIENDS</span>
+        </div>
+
+      </div>
+
+
+      <div class="game-card">
+
+        <div class="game-number">
+          003
+        </div>
+
+        <h3>
+          Game Three
+        </h3>
+
+        <p>
+          A chill experience when you just
+          want to relax and play.
+        </p>
+
+        <div class="game-tags">
+          <span class="tag">30 MIN</span>
+          <span class="tag">CHILL</span>
+          <span class="tag">CASUAL</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       DEV HUB
+  ========================= -->
+
+  <section class="dev-section" id="dev">
+
+    <div class="section-eyebrow">
+      NIXYL DEV HUB
+    </div>
+
+    <div class="dev-content">
+
+      <h2 class="dev-title">
+        Discover what to build with.
+      </h2>
+
+      <p class="dev-description">
+        Plugins, scripts, UI resources, AI tools,
+        tutorials and useful resources for Roblox developers.
+        Everything you need to spend less time searching
+        and more time building.
+      </p>
+
+      <div class="buttons">
+
+        <a href="#" class="button button-primary">
+          EXPLORE DEV HUB
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div>
+      NIXYL
+    </div>
+
+    <div>
+      WORLDS BUILT DIFFERENT.
+    </div>
+
+  </footer>
 
 </body>
 </html>
