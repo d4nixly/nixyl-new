@@ -19,13 +19,28 @@
 
     body {
       background: #080808;
-      color: #f4f1eb;
+      color: #f3efe8;
       font-family: Arial, Helvetica, sans-serif;
       overflow-x: hidden;
     }
 
     /* =========================
-       NAVIGATION
+       GLOBAL
+    ========================= */
+
+    section {
+      position: relative;
+    }
+
+    .eyebrow {
+      color: #d9683c;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .22em;
+    }
+
+    /* =========================
+       NAV
     ========================= */
 
     nav {
@@ -33,49 +48,77 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 86px;
+      height: 82px;
       padding: 0 7%;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      z-index: 20;
+      align-items: center;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
 
     .logo {
-      font-size: 21px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 20px;
       font-weight: 800;
-      letter-spacing: 0.16em;
+      letter-spacing: .12em;
     }
 
-    .nav-links {
+    .logo-mark {
+      width: 20px;
+      height: 25px;
+      position: relative;
+      transform: skewY(-20deg);
+    }
+
+    .logo-mark::before,
+    .logo-mark::after {
+      content: "";
+      position: absolute;
+      width: 7px;
+      height: 25px;
+      background: linear-gradient(#aaa, #555);
+      border-radius: 2px;
+    }
+
+    .logo-mark::before {
+      left: 2px;
+    }
+
+    .logo-mark::after {
+      right: 2px;
+    }
+
+    .nav-right {
       display: flex;
       align-items: center;
       gap: 34px;
     }
 
-    .nav-links a {
-      color: #a5a5a5;
+    .nav-right a {
+      color: #999;
       text-decoration: none;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 600;
-      letter-spacing: 0.14em;
-      transition: 0.25s ease;
+      letter-spacing: .14em;
+      transition: .25s;
     }
 
-    .nav-links a:hover {
-      color: #fff;
+    .nav-right a:hover {
+      color: white;
     }
 
     .search {
-      width: 35px;
-      height: 35px;
-      border: 1px solid #303030;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #292929;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: grid;
+      place-items: center;
       color: #aaa;
-      font-size: 17px;
+      font-size: 15px;
     }
 
     /* =========================
@@ -84,373 +127,563 @@
 
     .hero {
       min-height: 100vh;
-      position: relative;
+      padding: 82px 7% 70px;
       display: flex;
       align-items: center;
-      padding: 120px 7% 90px;
       overflow: hidden;
 
       background:
         radial-gradient(
-          circle at 75% 45%,
-          rgba(180, 61, 27, 0.20),
-          transparent 30%
+          ellipse at 75% 48%,
+          rgba(175,54,24,.25),
+          transparent 34%
         ),
         radial-gradient(
-          circle at 25% 90%,
-          rgba(255, 80, 30, 0.06),
-          transparent 30%
+          ellipse at 50% 100%,
+          rgba(120,25,10,.12),
+          transparent 45%
         ),
         #080808;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 5;
-      width: 55%;
-      max-width: 720px;
+    /* subtle fabric-like background */
+
+    .hero::before,
+    .play-section::before,
+    .games-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .14;
+      pointer-events: none;
+
+      background:
+        repeating-linear-gradient(
+          115deg,
+          transparent 0,
+          transparent 5px,
+          rgba(255,255,255,.025) 6px,
+          transparent 9px
+        );
     }
 
-    .eyebrow {
-      color: #d85b32;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      margin-bottom: 25px;
+    .hero-content {
+      width: 52%;
+      max-width: 680px;
+      position: relative;
+      z-index: 10;
+      padding-top: 20px;
     }
 
     .hero h1 {
+      margin-top: 20px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(58px, 7vw, 104px);
-      line-height: 0.94;
+      font-size: clamp(58px, 7vw, 98px);
       font-weight: 400;
-      letter-spacing: -0.06em;
-      max-width: 700px;
+      line-height: .94;
+      letter-spacing: -.065em;
+      max-width: 690px;
     }
 
     .hero-description {
-      margin-top: 32px;
+      margin-top: 29px;
       max-width: 500px;
-      color: #999;
-      font-size: 16px;
+      color: #9a9894;
+      font-size: 14px;
       line-height: 1.75;
     }
 
     .buttons {
       display: flex;
-      gap: 13px;
-      margin-top: 38px;
+      gap: 12px;
+      margin-top: 34px;
     }
 
     .button {
-      display: inline-block;
-      padding: 16px 22px;
+      padding: 14px 20px;
       text-decoration: none;
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 700;
-      letter-spacing: 0.13em;
-      transition: 0.25s ease;
+      letter-spacing: .13em;
+      transition: .25s;
     }
 
-    .button-primary {
-      background: #eeeae3;
+    .primary {
+      background: #e9e4db;
       color: #111;
     }
 
-    .button-primary:hover {
+    .primary:hover {
       background: white;
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
 
-    .button-secondary {
-      border: 1px solid #3a3a3a;
+    .secondary {
       color: #ddd;
+      border: 1px solid #414141;
     }
 
-    .button-secondary:hover {
-      border-color: #777;
-      transform: translateY(-3px);
+    .secondary:hover {
+      border-color: #888;
+      transform: translateY(-2px);
     }
 
     /* =========================
-       HERO VISUAL
+       HERO ART
     ========================= */
 
-    .hero-visual {
+    .hero-art {
       position: absolute;
-      width: 650px;
-      height: 650px;
-      right: -30px;
+      right: 3%;
       top: 50%;
       transform: translateY(-50%);
-      z-index: 2;
+      width: 590px;
+      height: 590px;
+      z-index: 4;
     }
 
-    .visual-glow {
+    .art-glow {
       position: absolute;
-      width: 440px;
-      height: 440px;
-      left: 100px;
-      top: 105px;
-      border-radius: 50%;
-      background: rgba(190, 62, 25, 0.18);
-      filter: blur(85px);
-    }
-
-    .ring {
-      position: absolute;
-      border: 1px solid rgba(255,255,255,0.10);
+      width: 430px;
+      height: 330px;
+      left: 80px;
+      top: 130px;
+      background: rgba(180,57,24,.22);
+      filter: blur(80px);
       border-radius: 50%;
     }
 
-    .ring-one {
-      width: 470px;
-      height: 470px;
-      left: 90px;
-      top: 90px;
+    .art-orbit {
+      position: absolute;
+      width: 490px;
+      height: 300px;
+      left: 50px;
+      top: 130px;
+      border: 1px solid rgba(231,107,48,.25);
+      border-radius: 50%;
+      transform: rotate(-15deg);
     }
 
-    .ring-two {
-      width: 350px;
-      height: 350px;
-      left: 150px;
-      top: 150px;
-    }
+    /* trophy */
 
     .trophy {
       position: absolute;
-      left: 245px;
-      top: 205px;
-      font-size: 145px;
-      filter: drop-shadow(0 30px 25px rgba(0,0,0,0.8));
-      transform: rotate(-8deg);
+      width: 115px;
+      height: 190px;
+      left: 235px;
+      top: 185px;
+      filter: drop-shadow(0 25px 20px rgba(0,0,0,.7));
     }
+
+    .trophy-cup {
+      position: absolute;
+      left: 25px;
+      top: 25px;
+      width: 65px;
+      height: 75px;
+      background: linear-gradient(
+        100deg,
+        #8f4d12,
+        #f5bd48 38%,
+        #fff0a2 52%,
+        #a86415 78%,
+        #61320d
+      );
+      border-radius: 9px 9px 28px 28px;
+    }
+
+    .trophy-cup::before,
+    .trophy-cup::after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      width: 29px;
+      height: 45px;
+      border: 7px solid #c98b28;
+      border-radius: 50%;
+    }
+
+    .trophy-cup::before {
+      left: -27px;
+    }
+
+    .trophy-cup::after {
+      right: -27px;
+    }
+
+    .trophy-head {
+      position: absolute;
+      width: 38px;
+      height: 34px;
+      left: 39px;
+      top: 0;
+      background: linear-gradient(135deg,#ffe58a,#a96a18);
+      border-radius: 9px;
+    }
+
+    .trophy-neck {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      left: 47px;
+      top: 92px;
+      background: #c88823;
+    }
+
+    .trophy-base {
+      position: absolute;
+      width: 115px;
+      height: 42px;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(#5e3514,#c28a2e,#4d2c12);
+      border-radius: 9px 9px 4px 4px;
+      border-bottom: 7px solid #17100a;
+    }
+
+    /* wings */
+
+    .wing {
+      position: absolute;
+      width: 105px;
+      height: 70px;
+      top: 145px;
+    }
+
+    .wing.left {
+      left: 125px;
+      transform: rotate(-23deg);
+    }
+
+    .wing.right {
+      right: 75px;
+      transform: scaleX(-1) rotate(-23deg);
+    }
+
+    .feather {
+      position: absolute;
+      width: 70px;
+      height: 15px;
+      background: linear-gradient(90deg,#fff0b1,#a8792d);
+      border-radius: 100% 0 100% 0;
+      transform: rotate(-25deg);
+      transform-origin: right center;
+    }
+
+    .feather:nth-child(1) { top: 0; right: 0; }
+    .feather:nth-child(2) { top: 16px; right: 8px; }
+    .feather:nth-child(3) { top: 32px; right: 17px; }
+    .feather:nth-child(4) { top: 48px; right: 27px; }
+
+    /* red R */
+
+    .roblox-r {
+      position: absolute;
+      left: 95px;
+      top: 105px;
+      width: 58px;
+      height: 58px;
+      background: linear-gradient(145deg,#ff6253,#8e1f18);
+      border-radius: 10px;
+      transform: rotate(-13deg);
+      box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    }
+
+    .roblox-r::before {
+      content: "R";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: #fff3e9;
+      font-family: Arial,sans-serif;
+      font-weight: 900;
+      font-size: 43px;
+      text-shadow: 2px 3px 0 #721d16;
+    }
+
+    /* crown */
+
+    .crown {
+      position: absolute;
+      right: 52px;
+      bottom: 135px;
+      width: 105px;
+      height: 65px;
+      background: linear-gradient(150deg,#fff09a,#9b6416);
+      clip-path: polygon(
+        0 100%,
+        10% 25%,
+        32% 52%,
+        50% 5%,
+        68% 52%,
+        90% 25%,
+        100% 100%
+      );
+      transform: rotate(7deg);
+      box-shadow: 0 15px 20px rgba(0,0,0,.6);
+    }
+
+    /* coil */
 
     .coil {
       position: absolute;
-      right: 70px;
-      bottom: 105px;
-      font-size: 82px;
-      filter: drop-shadow(0 25px 20px rgba(0,0,0,0.8));
-      transform: rotate(14deg);
+      left: 125px;
+      bottom: 135px;
+      width: 80px;
+      height: 105px;
+      transform: rotate(-15deg);
     }
 
-    .visual-label {
+    .coil-line {
       position: absolute;
-      left: 20px;
+      width: 80px;
+      height: 80px;
+      border: 7px solid #ef7b72;
+      border-left-color: transparent;
+      border-radius: 50%;
+    }
+
+    .coil-line:nth-child(1) { top: 0; }
+    .coil-line:nth-child(2) { top: 18px; }
+    .coil-line:nth-child(3) { top: 36px; }
+
+    .art-label {
+      position: absolute;
+      left: 65px;
       bottom: 70px;
-      color: #555;
+      color: #777;
       font-size: 9px;
-      letter-spacing: 0.2em;
+      letter-spacing: .22em;
     }
 
     /* =========================
-       PLAY SECTION
+       PLAY
     ========================= */
 
     .play-section {
-      position: relative;
-      padding: 150px 7% 170px;
-      background: #0d0d0d;
-      border-top: 1px solid #181818;
+      padding: 135px 7% 145px;
+      background: #0c0c0c;
+      border-top: 1px solid #1b1b1b;
     }
 
-    .section-eyebrow {
-      color: #d85b32;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      margin-bottom: 22px;
+    .play-layout {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 80px;
+      align-items: center;
     }
 
     .play-title {
+      margin-top: 18px;
       font-family: Georgia, "Times New Roman", serif;
       font-weight: 400;
-      font-size: clamp(45px, 6vw, 78px);
-      letter-spacing: -0.05em;
-      line-height: 0.98;
-      max-width: 800px;
+      font-size: clamp(45px,5vw,70px);
+      line-height: .98;
+      letter-spacing: -.055em;
     }
 
-    .play-intro {
-      color: #888;
-      max-width: 570px;
-      font-size: 15px;
+    .play-description {
+      color: #858585;
+      max-width: 400px;
+      font-size: 13px;
       line-height: 1.8;
-      margin-top: 28px;
+      margin-top: 25px;
     }
 
-    /* FINDER */
+    /* finder */
 
     .finder {
-      margin-top: 80px;
-      max-width: 1050px;
-      border: 1px solid #292929;
-      background: #111;
-      padding: 45px;
-      position: relative;
+      padding: 28px;
+      background:
+        linear-gradient(
+          135deg,
+          #353331,
+          #181716 48%,
+          #292725
+        );
+      border: 1px solid #58524c;
+      box-shadow:
+        0 30px 70px rgba(0,0,0,.5),
+        inset 0 0 50px rgba(255,255,255,.025);
+      border-radius: 12px;
     }
 
-    .finder-top {
+    .finder-row {
+      height: 47px;
+      border: 1px solid #66615b;
+      background: rgba(0,0,0,.42);
+      border-radius: 25px;
+      margin-bottom: 10px;
+      padding: 0 18px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 40px;
+      justify-content: space-between;
+      color: #ddd;
+      font-size: 12px;
     }
 
-    .finder-label {
-      font-size: 10px;
-      color: #666;
-      letter-spacing: 0.18em;
-      font-weight: 700;
+    .finder-row span:last-child {
+      color: #777;
     }
 
-    .finder-status {
-      color: #d85b32;
-      font-size: 10px;
-      letter-spacing: 0.14em;
-    }
-
-    .choices {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .choice {
-      border: 1px solid #2b2b2b;
-      background: #0c0c0c;
-      padding: 28px 25px;
-      min-height: 130px;
-      transition: 0.25s ease;
-      cursor: pointer;
-    }
-
-    .choice:hover {
-      border-color: #555;
-      transform: translateY(-3px);
-    }
-
-    .choice-small {
-      color: #666;
-      font-size: 9px;
-      letter-spacing: 0.16em;
-      margin-bottom: 18px;
-    }
-
-    .choice-text {
-      color: #eee;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 22px;
-    }
-
-    .finder-bottom {
-      margin-top: 28px;
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .find-button {
+    .finder-button {
+      width: 100%;
+      height: 47px;
+      margin-top: 4px;
       border: none;
-      background: #e9e5de;
+      border-radius: 25px;
+      background: #e8e2d9;
       color: #111;
-      padding: 17px 27px;
       font-size: 10px;
       font-weight: 800;
-      letter-spacing: 0.14em;
+      letter-spacing: .14em;
       cursor: pointer;
-      transition: 0.25s ease;
+      transition: .25s;
     }
 
-    .find-button:hover {
+    .finder-button:hover {
       background: white;
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
 
     /* =========================
-       QUICK PLAYS
+       GAMES
     ========================= */
 
     .games-section {
-      padding: 130px 7% 160px;
+      padding: 115px 7% 145px;
       background: #080808;
+      border-top: 1px solid #191919;
     }
 
-    .games-heading {
+    .games-top {
       display: flex;
       justify-content: space-between;
       align-items: end;
-      margin-bottom: 50px;
+      margin-bottom: 38px;
     }
 
-    .games-heading h2 {
+    .games-title {
+      margin-top: 16px;
       font-family: Georgia, "Times New Roman", serif;
       font-weight: 400;
-      font-size: clamp(40px, 5vw, 65px);
-      letter-spacing: -0.05em;
+      font-size: clamp(42px,5vw,66px);
+      letter-spacing: -.055em;
     }
 
-    .games-heading p {
-      color: #666;
-      font-size: 11px;
-      letter-spacing: 0.1em;
+    .games-note {
+      color: #555;
+      font-size: 9px;
+      letter-spacing: .2em;
     }
 
     .game-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(3,1fr);
+      gap: 14px;
     }
 
     .game-card {
-      min-height: 310px;
-      border: 1px solid #222;
+      min-height: 290px;
+      border: 1px solid #252525;
       background: #101010;
-      padding: 25px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      transition: 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      transition: .3s;
     }
 
     .game-card:hover {
-      border-color: #444;
       transform: translateY(-5px);
+      border-color: #555;
+    }
+
+    .game-image {
+      height: 175px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .game-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        transparent 20%,
+        rgba(0,0,0,.8)
+      );
+    }
+
+    .game-one {
+      background:
+        radial-gradient(circle at 65% 35%,#dca83c,transparent 12%),
+        linear-gradient(135deg,#184b50,#8e451d);
+    }
+
+    .game-two {
+      background:
+        radial-gradient(circle at 70% 25%,#ff5e24,transparent 16%),
+        linear-gradient(135deg,#27205e,#a91d1d);
+    }
+
+    .game-three {
+      background:
+        radial-gradient(circle at 35% 30%,#83d9ff,transparent 18%),
+        linear-gradient(135deg,#12656a,#e8b85c);
+    }
+
+    .fake-character {
+      position: absolute;
+      width: 58px;
+      height: 72px;
+      left: 48%;
+      bottom: 15px;
+      background: linear-gradient(#ffd37d,#c77a30);
+      border-radius: 9px;
+      transform: translateX(-50%);
+      z-index: 2;
+      box-shadow: 15px 10px 0 rgba(0,0,0,.15);
+    }
+
+    .fake-character::before {
+      content: "";
+      position: absolute;
+      width: 55px;
+      height: 45px;
+      top: -35px;
+      left: 2px;
+      background: #e8a75d;
+      border-radius: 50%;
+    }
+
+    .game-info {
+      padding: 17px 18px;
     }
 
     .game-number {
-      color: #555;
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      margin-bottom: auto;
+      color: #666;
+      font-size: 8px;
+      letter-spacing: .15em;
     }
 
-    .game-card h3 {
+    .game-name {
+      margin-top: 7px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 28px;
-      font-weight: 400;
-      margin-bottom: 10px;
-    }
-
-    .game-card p {
-      color: #777;
-      font-size: 12px;
-      line-height: 1.6;
+      font-size: 23px;
     }
 
     .game-tags {
       display: flex;
-      gap: 7px;
-      margin-top: 18px;
-      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
     }
 
     .tag {
+      padding: 6px 8px;
       border: 1px solid #292929;
-      padding: 7px 9px;
-      color: #888;
-      font-size: 8px;
-      letter-spacing: 0.1em;
+      color: #777;
+      font-size: 7px;
+      letter-spacing: .1em;
     }
 
     /* =========================
@@ -458,29 +691,56 @@
     ========================= */
 
     .dev-section {
-      padding: 150px 7%;
-      background: #0d0d0d;
-      border-top: 1px solid #191919;
+      padding: 120px 7%;
+      min-height: 390px;
+      background:
+        radial-gradient(
+          ellipse at 20% 70%,
+          rgba(90,60,35,.12),
+          transparent 35%
+        ),
+        #0c0c0c;
+      border-top: 1px solid #1a1a1a;
     }
 
-    .dev-content {
-      max-width: 850px;
+    .dev-layout {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 70px;
+      align-items: center;
     }
 
     .dev-title {
+      margin-top: 18px;
       font-family: Georgia, "Times New Roman", serif;
       font-weight: 400;
-      font-size: clamp(48px, 6vw, 82px);
-      line-height: 0.98;
-      letter-spacing: -0.055em;
+      font-size: clamp(48px,6vw,80px);
+      line-height: .97;
+      letter-spacing: -.06em;
     }
 
     .dev-description {
-      margin-top: 30px;
       color: #888;
-      font-size: 15px;
+      font-size: 13px;
       line-height: 1.8;
-      max-width: 570px;
+      max-width: 470px;
+      margin-top: 25px;
+    }
+
+    .dev-code {
+      border: 1px solid #292929;
+      min-height: 190px;
+      background: #090909;
+      padding: 25px;
+      color: #555;
+      font-family: monospace;
+      font-size: 11px;
+      line-height: 1.8;
+      box-shadow: 0 30px 70px rgba(0,0,0,.35);
+    }
+
+    .code-highlight {
+      color: #b86a4c;
     }
 
     /* =========================
@@ -488,14 +748,13 @@
     ========================= */
 
     footer {
-      padding: 50px 7%;
+      padding: 35px 7%;
       border-top: 1px solid #1d1d1d;
-      background: #080808;
       display: flex;
       justify-content: space-between;
       color: #555;
-      font-size: 10px;
-      letter-spacing: 0.12em;
+      font-size: 9px;
+      letter-spacing: .16em;
     }
 
     /* =========================
@@ -508,42 +767,47 @@
         width: 100%;
       }
 
-      .hero-visual {
-        right: -330px;
-        opacity: 0.35;
+      .hero-art {
+        right: -260px;
+        opacity: .32;
       }
 
-      .choices,
+      .play-layout,
+      .dev-layout {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
       .game-grid {
         grid-template-columns: 1fr;
-      }
-
-      .finder {
-        padding: 28px;
       }
     }
 
     @media (max-width: 600px) {
 
       nav {
-        padding: 0 24px;
+        padding: 0 22px;
       }
 
-      .nav-links {
-        gap: 15px;
+      .nav-right {
+        gap: 13px;
       }
 
-      .nav-links a:nth-child(3) {
+      .nav-right a {
+        font-size: 8px;
+      }
+
+      .nav-right a:nth-child(3) {
         display: none;
       }
 
       .hero {
-        padding-left: 24px;
-        padding-right: 24px;
+        padding-left: 22px;
+        padding-right: 22px;
       }
 
       .hero h1 {
-        font-size: 58px;
+        font-size: 56px;
       }
 
       .buttons {
@@ -551,22 +815,25 @@
         align-items: flex-start;
       }
 
-      .finder-top {
-        align-items: flex-start;
-        gap: 15px;
-        flex-direction: column;
-      }
-
       .play-section,
       .games-section,
       .dev-section {
-        padding-left: 24px;
-        padding-right: 24px;
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .games-top {
+        display: block;
+      }
+
+      .games-note {
+        display: block;
+        margin-top: 15px;
       }
 
       footer {
-        padding-left: 24px;
-        padding-right: 24px;
+        padding-left: 22px;
+        padding-right: 22px;
       }
     }
   </style>
@@ -574,25 +841,26 @@
 
 <body>
 
-  <!-- =========================
-       NAVIGATION
-  ========================= -->
+  <!-- NAV -->
 
   <nav>
-    <div class="logo">NIXYL</div>
 
-    <div class="nav-links">
+    <div class="logo">
+      <div class="logo-mark"></div>
+      NIXYL
+    </div>
+
+    <div class="nav-right">
       <a href="#play">PLAY</a>
       <a href="#dev">DEV HUB</a>
       <a href="#discover">DISCOVER</a>
       <div class="search">⌕</div>
     </div>
+
   </nav>
 
 
-  <!-- =========================
-       HERO
-  ========================= -->
+  <!-- HERO -->
 
   <section class="hero">
 
@@ -607,36 +875,66 @@
       </h1>
 
       <p class="hero-description">
-        Stop scrolling through endless Roblox experiences.
-        Tell NIXYL what you have time for, who you're playing with,
-        and what kind of experience you want.
+        NIXYL helps you discover Roblox experiences based
+        on your time, your mood, and who you're playing with.
       </p>
 
       <div class="buttons">
-        <a href="#play" class="button button-primary">
-          EXPLORE NIXYL PLAY
+
+        <a href="#play" class="button primary">
+          EXPLORE NIXYL PLAY →
         </a>
 
-        <a href="#dev" class="button button-secondary">
+        <a href="#dev" class="button secondary">
           EXPLORE DEV HUB
         </a>
+
       </div>
 
     </div>
 
 
-    <div class="hero-visual">
+    <!-- CINEMATIC HERO ART -->
 
-      <div class="visual-glow"></div>
+    <div class="hero-art">
 
-      <div class="ring ring-one"></div>
-      <div class="ring ring-two"></div>
+      <div class="art-glow"></div>
+      <div class="art-orbit"></div>
 
-      <div class="trophy">🏆</div>
+      <div class="roblox-r"></div>
 
-      <div class="coil">🌀</div>
+      <div class="trophy">
 
-      <div class="visual-label">
+        <div class="trophy-head"></div>
+        <div class="trophy-cup"></div>
+        <div class="trophy-neck"></div>
+        <div class="trophy-base"></div>
+
+      </div>
+
+      <div class="wing left">
+        <div class="feather"></div>
+        <div class="feather"></div>
+        <div class="feather"></div>
+        <div class="feather"></div>
+      </div>
+
+      <div class="wing right">
+        <div class="feather"></div>
+        <div class="feather"></div>
+        <div class="feather"></div>
+        <div class="feather"></div>
+      </div>
+
+      <div class="coil">
+        <div class="coil-line"></div>
+        <div class="coil-line"></div>
+        <div class="coil-line"></div>
+      </div>
+
+      <div class="crown"></div>
+
+      <div class="art-label">
         DISCOVER · PLAY · BUILD
       </div>
 
@@ -645,82 +943,49 @@
   </section>
 
 
-  <!-- =========================
-       NIXYL PLAY
-  ========================= -->
+  <!-- PLAY -->
 
   <section class="play-section" id="play">
 
-    <div class="section-eyebrow">
-      NIXYL PLAY
-    </div>
+    <div class="play-layout">
 
-    <h2 class="play-title">
-      The art of playtime discovery.
-    </h2>
+      <div>
 
-    <p class="play-intro">
-      Tell us what your situation looks like.
-      NIXYL finds experiences that fit instead of
-      making you scroll through hundreds of games.
-    </p>
-
-
-    <div class="finder">
-
-      <div class="finder-top">
-
-        <div class="finder-label">
-          WHAT ARE YOU LOOKING FOR?
+        <div class="eyebrow">
+          NIXYL PLAY
         </div>
 
-        <div class="finder-status">
-          01 / 03
-        </div>
+        <h2 class="play-title">
+          The art of playtime discovery.
+        </h2>
+
+        <p class="play-description">
+          Short on time? Playing with friends?
+          Just bored? Tell NIXYL what you're looking for
+          and find experiences that actually fit.
+        </p>
 
       </div>
 
 
-      <div class="choices">
+      <div class="finder">
 
-        <div class="choice">
-          <div class="choice-small">
-            TIME
-          </div>
-
-          <div class="choice-text">
-            I have 20 minutes.
-          </div>
+        <div class="finder-row">
+          <span>◷ &nbsp; I have 20 minutes.</span>
+          <span>›</span>
         </div>
 
-
-        <div class="choice">
-          <div class="choice-small">
-            PLAYERS
-          </div>
-
-          <div class="choice-text">
-            I'm playing with 2 friends.
-          </div>
+        <div class="finder-row">
+          <span>♧ &nbsp; I'm playing with 2 friends.</span>
+          <span>›</span>
         </div>
 
-
-        <div class="choice">
-          <div class="choice-small">
-            VIBE
-          </div>
-
-          <div class="choice-text">
-            I want something funny.
-          </div>
+        <div class="finder-row">
+          <span>☺ &nbsp; I want something funny.</span>
+          <span>›</span>
         </div>
 
-      </div>
-
-
-      <div class="finder-bottom">
-
-        <button class="find-button">
+        <button class="finder-button">
           FIND MY GAME →
         </button>
 
@@ -731,27 +996,27 @@
   </section>
 
 
-  <!-- =========================
-       QUICK PLAYS
-  ========================= -->
+  <!-- QUICK PLAYS -->
 
   <section class="games-section" id="discover">
 
-    <div class="games-heading">
+    <div class="games-top">
 
       <div>
-        <div class="section-eyebrow">
+
+        <div class="eyebrow">
           QUICK PLAYS
         </div>
 
-        <h2>
+        <h2 class="games-title">
           Worth your time.
         </h2>
+
       </div>
 
-      <p>
+      <div class="games-note">
         CURATED FOR YOUR NEXT SESSION
-      </p>
+      </div>
 
     </div>
 
@@ -760,47 +1025,26 @@
 
       <div class="game-card">
 
-        <div class="game-number">
-          001
+        <div class="game-image game-one">
+          <div class="fake-character"></div>
         </div>
 
-        <h3>
-          Game One
-        </h3>
+        <div class="game-info">
 
-        <p>
-          A quick experience for when you only
-          have a little time to play.
-        </p>
+          <div class="game-number">
+            001
+          </div>
 
-        <div class="game-tags">
-          <span class="tag">10 MIN</span>
-          <span class="tag">FUNNY</span>
-          <span class="tag">MULTIPLAYER</span>
-        </div>
+          <div class="game-name">
+            Blox Fruits
+          </div>
 
-      </div>
+          <div class="game-tags">
+            <span class="tag">10 MIN</span>
+            <span class="tag">ACTION</span>
+            <span class="tag">MULTIPLAYER</span>
+          </div>
 
-
-      <div class="game-card">
-
-        <div class="game-number">
-          002
-        </div>
-
-        <h3>
-          Game Two
-        </h3>
-
-        <p>
-          Something chaotic to jump into
-          with your friends.
-        </p>
-
-        <div class="game-tags">
-          <span class="tag">20 MIN</span>
-          <span class="tag">CHAOS</span>
-          <span class="tag">FRIENDS</span>
         </div>
 
       </div>
@@ -808,23 +1052,53 @@
 
       <div class="game-card">
 
-        <div class="game-number">
-          003
+        <div class="game-image game-two">
+          <div class="fake-character"></div>
         </div>
 
-        <h3>
-          Game Three
-        </h3>
+        <div class="game-info">
 
-        <p>
-          A chill experience when you just
-          want to relax and play.
-        </p>
+          <div class="game-number">
+            002
+          </div>
 
-        <div class="game-tags">
-          <span class="tag">30 MIN</span>
-          <span class="tag">CHILL</span>
-          <span class="tag">CASUAL</span>
+          <div class="game-name">
+            BedWars
+          </div>
+
+          <div class="game-tags">
+            <span class="tag">20 MIN</span>
+            <span class="tag">CHAOS</span>
+            <span class="tag">FRIENDS</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="game-card">
+
+        <div class="game-image game-three">
+          <div class="fake-character"></div>
+        </div>
+
+        <div class="game-info">
+
+          <div class="game-number">
+            003
+          </div>
+
+          <div class="game-name">
+            Adopt Me!
+          </div>
+
+          <div class="game-tags">
+            <span class="tag">30 MIN</span>
+            <span class="tag">CHILL</span>
+            <span class="tag">CASUAL</span>
+          </div>
+
         </div>
 
       </div>
@@ -834,35 +1108,61 @@
   </section>
 
 
-  <!-- =========================
-       DEV HUB
-  ========================= -->
+  <!-- DEV HUB -->
 
   <section class="dev-section" id="dev">
 
-    <div class="section-eyebrow">
-      NIXYL DEV HUB
-    </div>
+    <div class="dev-layout">
 
-    <div class="dev-content">
+      <div>
 
-      <h2 class="dev-title">
-        Discover what to build with.
-      </h2>
+        <div class="eyebrow">
+          NIXYL DEV HUB
+        </div>
 
-      <p class="dev-description">
-        Plugins, scripts, UI resources, AI tools,
-        tutorials and useful resources for Roblox developers.
-        Everything you need to spend less time searching
-        and more time building.
-      </p>
+        <h2 class="dev-title">
+          Discover what to build with.
+        </h2>
 
-      <div class="buttons">
+        <p class="dev-description">
+          Plugins, scripts, UI resources, AI tools,
+          tutorials and useful resources for Roblox developers.
+          Spend less time searching and more time building.
+        </p>
 
-        <a href="#" class="button button-primary">
-          EXPLORE DEV HUB
-        </a>
+        <div class="buttons">
 
+          <a href="#" class="button primary">
+            EXPLORE DEV HUB →
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="dev-code">
+        <span class="code-highlight">local</span> NIXYL = {}
+
+        <br><br>
+
+        NIXYL.plugins = <span class="code-highlight">true</span>
+
+        <br>
+
+        NIXYL.scripts = <span class="code-highlight">true</span>
+
+        <br>
+
+        NIXYL.uiResources = <span class="code-highlight">true</span>
+
+        <br>
+
+        NIXYL.aiTools = <span class="code-highlight">true</span>
+
+        <br><br>
+
+        <span class="code-highlight">return</span> NIXYL
       </div>
 
     </div>
@@ -870,9 +1170,7 @@
   </section>
 
 
-  <!-- =========================
-       FOOTER
-  ========================= -->
+  <!-- FOOTER -->
 
   <footer>
 
