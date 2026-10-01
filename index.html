@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>NIXYL — Find Something Worth Playing</title>
 
   <style>
@@ -12,97 +13,53 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
+      background: #090909;
+      color: #f5f2ed;
       font-family: Arial, Helvetica, sans-serif;
-      background: #080808;
-      color: #f4f4f4;
       overflow-x: hidden;
     }
 
-    /* BACKGROUND */
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.16;
-      background-image:
-        repeating-linear-gradient(
-          0deg,
-          rgba(255,255,255,0.025) 0px,
-          rgba(255,255,255,0.025) 1px,
-          transparent 1px,
-          transparent 4px
-        ),
-        repeating-linear-gradient(
-          90deg,
-          rgba(255,255,255,0.018) 0px,
-          rgba(255,255,255,0.018) 1px,
-          transparent 1px,
-          transparent 5px
-        );
-      z-index: 10;
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      padding: 28px 7%;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 75% 45%, rgba(180, 55, 25, 0.18), transparent 30%),
+        radial-gradient(circle at 20% 80%, rgba(255, 80, 30, 0.06), transparent 25%),
+        #090909;
     }
 
-    body::after {
-      content: "";
-      position: fixed;
-      width: 700px;
-      height: 700px;
-      top: -300px;
-      right: -200px;
-      background: radial-gradient(
-        circle,
-        rgba(255, 70, 25, 0.13),
-        transparent 65%
-      );
-      pointer-events: none;
-    }
-
-    /* NAVBAR */
+    /* NAV */
 
     nav {
-      width: 100%;
-      height: 82px;
+      height: 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 7%;
       position: relative;
-      z-index: 20;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      background: rgba(8,8,8,0.65);
-      backdrop-filter: blur(14px);
+      z-index: 10;
     }
 
     .logo {
-      font-size: 25px;
-      font-weight: 900;
-      letter-spacing: -1px;
-    }
-
-    .logo span {
-      color: #ff5b2e;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
     }
 
     .nav-links {
       display: flex;
-      align-items: center;
       gap: 38px;
+      align-items: center;
     }
 
     .nav-links a {
-      color: #a8a8a8;
+      color: #aaa;
       text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      transition: 0.2s ease;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      transition: 0.25s;
     }
 
     .nav-links a:hover {
@@ -110,369 +67,192 @@
     }
 
     .search {
-      width: 39px;
-      height: 39px;
-      border: 1px solid rgba(255,255,255,0.12);
+      width: 34px;
+      height: 34px;
+      border: 1px solid #333;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #aaa;
-      font-size: 16px;
+      font-size: 14px;
     }
 
     /* HERO */
 
-    .hero {
-      min-height: 720px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      padding: 80px 7%;
-      overflow: hidden;
-    }
-
     .hero-content {
-      width: 58%;
       position: relative;
       z-index: 5;
+      max-width: 620px;
+      padding-top: 17vh;
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      color: #888;
+      color: #e85a32;
       font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin-bottom: 25px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #ff5428;
-      box-shadow: 0 0 14px rgba(255,84,40,0.7);
+      letter-spacing: 0.22em;
+      margin-bottom: 22px;
+      font-weight: 700;
     }
 
     h1 {
-      max-width: 720px;
-      font-size: clamp(60px, 7vw, 105px);
-      line-height: 0.91;
-      letter-spacing: -6px;
-      font-weight: 900;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(55px, 7vw, 100px);
+      font-weight: 400;
+      line-height: 0.94;
+      letter-spacing: -0.055em;
+      max-width: 700px;
     }
 
-    h1 span {
-      color: #888;
-    }
-
-    .hero-description {
-      max-width: 520px;
-      color: #8e8e8e;
+    .description {
+      color: #9d9d9d;
       font-size: 16px;
       line-height: 1.7;
+      max-width: 500px;
       margin-top: 30px;
     }
 
     .buttons {
       display: flex;
-      gap: 12px;
-      margin-top: 35px;
-      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 36px;
     }
 
-    .btn {
-      padding: 16px 22px;
-      border-radius: 8px;
+    .button {
       text-decoration: none;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.7px;
-      transition: 0.25s ease;
+      padding: 15px 22px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      transition: 0.25s;
     }
 
-    .btn-primary {
-      background: #f1f1f1;
-      color: #080808;
+    .primary {
+      background: #f0ece5;
+      color: #111;
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
+    .primary:hover {
       background: white;
+      transform: translateY(-2px);
     }
 
-    .btn-secondary {
+    .secondary {
+      border: 1px solid #393939;
       color: #ddd;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.025);
     }
 
-    .btn-secondary:hover {
-      border-color: rgba(255,255,255,0.3);
-      background: rgba(255,255,255,0.06);
+    .secondary:hover {
+      border-color: #777;
+      transform: translateY(-2px);
     }
 
-    /* LAPTOP */
+    /* RIGHT VISUAL */
 
-    .device {
+    .visual {
       position: absolute;
-      right: -80px;
-      top: 130px;
-      width: 570px;
-      height: 390px;
-      transform: rotate(-4deg);
-      z-index: 3;
+      width: 620px;
+      height: 620px;
+      right: 2%;
+      top: 17%;
+      z-index: 2;
     }
 
-    .screen {
+    .glow {
       position: absolute;
-      width: 500px;
-      height: 315px;
-      right: 35px;
-      top: 0;
-      border: 10px solid #1d1d1d;
-      border-radius: 18px 18px 8px 8px;
-      background:
-        radial-gradient(circle at 70% 35%, rgba(255,70,20,0.16), transparent 25%),
-        linear-gradient(145deg, #171717, #090909);
-      box-shadow:
-        0 30px 80px rgba(0,0,0,0.8),
-        0 0 70px rgba(255,70,25,0.08);
-      overflow: hidden;
-    }
-
-    .screen::before {
-      content: "NIXYL";
-      position: absolute;
-      top: 22px;
-      left: 25px;
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
-
-    .screen-ui {
-      position: absolute;
-      left: 25px;
-      bottom: 30px;
-      width: 250px;
-    }
-
-    .screen-line {
-      width: 180px;
-      height: 8px;
-      border-radius: 10px;
-      background: #444;
-      margin-bottom: 10px;
-    }
-
-    .screen-line.big {
-      width: 240px;
-      height: 25px;
-      background: #eee;
-    }
-
-    .screen-line.orange {
-      width: 105px;
-      background: #ff5428;
-    }
-
-    .keyboard {
-      position: absolute;
-      bottom: 20px;
-      left: 0;
-      width: 570px;
-      height: 65px;
-      background: linear-gradient(180deg, #292929, #101010);
-      clip-path: polygon(7% 0, 93% 0, 100% 100%, 0 100%);
-      border-radius: 4px;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.8);
-    }
-
-    /* FLOATING OBJECTS */
-
-    .object {
-      position: absolute;
-      z-index: 4;
-      filter: drop-shadow(0 20px 25px rgba(0,0,0,0.7));
-    }
-
-    .cube {
-      width: 65px;
-      height: 65px;
-      right: 90px;
-      top: 100px;
-      background: linear-gradient(135deg, #ff6a35, #8f1f0b);
-      transform: rotate(18deg);
-      border-radius: 10px;
-    }
-
-    .cube::after {
-      content: "";
-      position: absolute;
-      inset: 12px;
-      border: 2px solid rgba(255,255,255,0.35);
-      border-radius: 5px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(200, 65, 25, 0.16);
+      filter: blur(80px);
+      top: 90px;
+      left: 100px;
     }
 
     .orb {
-      width: 42px;
-      height: 42px;
-      right: 470px;
-      bottom: 70px;
+      position: absolute;
       border-radius: 50%;
-      background: radial-gradient(circle at 30% 25%, #fff, #ff5428 25%, #5e1709 75%);
+      border: 1px solid rgba(255,255,255,0.13);
     }
 
-    .small-block {
-      width: 34px;
-      height: 34px;
-      right: 185px;
-      bottom: 115px;
-      background: #ddd;
-      transform: rotate(25deg);
-      border-radius: 6px;
+    .orb.one {
+      width: 400px;
+      height: 400px;
+      top: 100px;
+      left: 100px;
     }
 
-    /* PLAY SECTION */
-
-    .play-section {
-      position: relative;
-      padding: 120px 7% 140px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      background:
-        radial-gradient(
-          circle at 50% 0%,
-          rgba(255,70,25,0.08),
-          transparent 35%
-        );
+    .orb.two {
+      width: 290px;
+      height: 290px;
+      top: 155px;
+      left: 155px;
     }
 
-    .section-label {
-      color: #ff5428;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      margin-bottom: 18px;
+    .trophy {
+      position: absolute;
+      font-size: 150px;
+      top: 190px;
+      left: 220px;
+      filter: drop-shadow(0 25px 30px rgba(0,0,0,0.7));
+      transform: rotate(-8deg);
     }
 
-    .play-section h2 {
-      font-size: clamp(40px, 5vw, 70px);
-      letter-spacing: -3px;
-      max-width: 800px;
-      line-height: 1;
+    .coil {
+      position: absolute;
+      font-size: 90px;
+      right: 65px;
+      bottom: 100px;
+      transform: rotate(15deg);
+      filter: drop-shadow(0 20px 25px rgba(0,0,0,0.7));
     }
 
-    .play-section h2 span {
-      color: #777;
+    .label {
+      position: absolute;
+      bottom: 55px;
+      left: 0;
+      color: #555;
+      font-size: 10px;
+      letter-spacing: 0.18em;
     }
 
-    .finder {
-      margin-top: 65px;
-      padding: 35px;
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 18px;
-      background: rgba(255,255,255,0.025);
-      max-width: 1050px;
-      box-shadow: 0 30px 100px rgba(0,0,0,0.35);
-    }
-
-    .finder-title {
-      color: #777;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      margin-bottom: 25px;
-    }
-
-    .choices {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .choice {
-      padding: 17px 20px;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 9px;
-      color: #bbb;
-      font-size: 14px;
-      background: #101010;
-    }
-
-    .find-button {
-      margin-top: 25px;
-      border: none;
-      padding: 16px 25px;
-      border-radius: 8px;
-      background: #ff5428;
-      color: white;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      cursor: pointer;
-      box-shadow: 0 10px 30px rgba(255,84,40,0.15);
-    }
-
-    /* MOBILE */
+    /* RESPONSIVE */
 
     @media (max-width: 900px) {
+      .hero {
+        padding: 24px;
+      }
+
       .nav-links {
         gap: 15px;
       }
 
-      .nav-links a:nth-child(3) {
-        display: none;
-      }
-
-      .hero {
-        min-height: 800px;
+      .visual {
+        opacity: 0.3;
+        right: -220px;
       }
 
       .hero-content {
-        width: 100%;
-      }
-
-      .device {
-        opacity: 0.25;
-        right: -240px;
-        top: 350px;
-      }
-
-      h1 {
-        letter-spacing: -4px;
+        padding-top: 18vh;
       }
     }
 
     @media (max-width: 600px) {
-      nav {
-        padding: 0 5%;
-      }
-
-      .nav-links a {
+      .nav-links a:nth-child(3) {
         display: none;
       }
 
-      .hero,
-      .play-section {
-        padding-left: 5%;
-        padding-right: 5%;
-      }
-
-      .hero {
-        padding-top: 70px;
-      }
-
       h1 {
-        font-size: 57px;
+        font-size: 56px;
       }
 
-      .finder {
-        padding: 22px;
+      .description {
+        font-size: 14px;
+      }
+
+      .buttons {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
@@ -480,103 +260,50 @@
 
 <body>
 
-  <nav>
-    <div class="logo">NIX<span>Y</span>L</div>
+  <section class="hero">
 
-    <div class="nav-links">
-      <a href="#play">PLAY</a>
-      <a href="#dev">DEV HUB</a>
-      <a href="#discover">DISCOVER</a>
-      <div class="search">⌕</div>
+    <nav>
+      <div class="logo">NIXYL</div>
+
+      <div class="nav-links">
+        <a href="#">PLAY</a>
+        <a href="#">DEV HUB</a>
+        <a href="#">DISCOVER</a>
+        <div class="search">⌕</div>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+
+      <div class="eyebrow">ROBLOX DISCOVERY</div>
+
+      <h1>Find something worth playing.</h1>
+
+      <p class="description">
+        Stop scrolling through endless Roblox experiences.
+        Tell NIXYL what you have time for, who you're playing with,
+        and what kind of experience you want.
+      </p>
+
+      <div class="buttons">
+        <a href="#" class="button primary">EXPLORE NIXYL PLAY</a>
+        <a href="#" class="button secondary">EXPLORE DEV HUB</a>
+      </div>
+
     </div>
-  </nav>
 
+    <div class="visual">
+      <div class="glow"></div>
+      <div class="orb one"></div>
+      <div class="orb two"></div>
 
-  <main>
+      <div class="trophy">🏆</div>
+      <div class="coil">🌀</div>
 
-    <section class="hero">
+      <div class="label">DISCOVER · PLAY · BUILD</div>
+    </div>
 
-      <div class="hero-content">
-
-        <div class="eyebrow">
-          ROBLOX DISCOVERY
-        </div>
-
-        <h1>
-          Find something<br>
-          worth <span>playing.</span>
-        </h1>
-
-        <p class="hero-description">
-          Stop scrolling through endless games. NIXYL helps you find
-          something that actually fits your time, mood and crew.
-        </p>
-
-        <div class="buttons">
-          <a href="#play" class="btn btn-primary">
-            EXPLORE NIXYL PLAY
-          </a>
-
-          <a href="#dev" class="btn btn-secondary">
-            EXPLORE DEV HUB
-          </a>
-        </div>
-
-      </div>
-
-
-      <div class="device">
-
-        <div class="screen">
-          <div class="screen-ui">
-            <div class="screen-line big"></div>
-            <div class="screen-line"></div>
-            <div class="screen-line orange"></div>
-          </div>
-        </div>
-
-        <div class="keyboard"></div>
-
-      </div>
-
-      <div class="object cube"></div>
-      <div class="object orb"></div>
-      <div class="object small-block"></div>
-
-    </section>
-
-
-    <section class="play-section" id="play">
-
-      <div class="section-label">
-        NIXYL PLAY
-      </div>
-
-      <h2>
-        The art of <span>playtime discovery.</span>
-      </h2>
-
-      <div class="finder">
-
-        <div class="finder-title">
-          TELL US WHAT YOU'RE LOOKING FOR
-        </div>
-
-        <div class="choices">
-          <div class="choice">I have 20 minutes.</div>
-          <div class="choice">I'm playing with 2 friends.</div>
-          <div class="choice">I want something funny.</div>
-        </div>
-
-        <button class="find-button">
-          FIND MY GAME →
-        </button>
-
-      </div>
-
-    </section>
-
-  </main>
+  </section>
 
 </body>
 </html>
