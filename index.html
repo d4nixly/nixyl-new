@@ -35,16 +35,15 @@
         </div>
       </div>
     </div>
-    
-    <!-- Hero object images container linked to your assets repository files -->
+
     <div class="hero-visual" id="hero-visual">
-      <img class="art art-hat" src="assets/Screenshot 2026-10-01 170854.png" alt="Dominus / Roblox Hat">
-      <img class="art art-coil" src="assets/Screenshot 2026-10-01 170929.png" alt="Speed Coil">
-      <img class="art art-trophy" src="assets/Screenshot 2026-10-01 171021.png" alt="Bloxy Trophy">
-      <img class="art art-logo" src="assets/Screenshot 2026-10-01 172942.png" alt="NIXYL Emblem">
       <span class="art-floor"></span>
+      <img class="art art-logo" src="assets/Screenshot 2026-10-01 172942.png" alt="Roblox Emblem">
+      <img class="art art-coil" src="assets/Screenshot 2026-10-01 170929.png" alt="Speed Coil">
+      <img class="art art-hat" src="assets/Screenshot 2026-10-01 170854.png" alt="Dominus Hat">
+      <img class="art art-trophy" src="assets/Screenshot 2026-10-01 171021.png" alt="Bloxy Trophy">
     </div>
-    
+
     <a class="scroll-cue" href="#play">Scroll to explore <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 1l4 4 4-4"/></svg></a>
   </section>
 
@@ -152,7 +151,6 @@
 </footer>
 
 <script>
-  // Finder: single-select time, multi-select vibe, player stepper
   document.querySelectorAll('.chips').forEach(function(g){
     g.addEventListener('click', function(e){
       var b = e.target.closest('.chip'); if(!b) return;
@@ -168,7 +166,6 @@
       out.textContent = n === 1 ? 'Solo' : n + ' players';
     });
   });
-  // Arrows scroll the "With friends" row
   document.querySelectorAll('.arrows button').forEach(function(b){
     b.addEventListener('click', function(){
       var r = document.getElementById('friends-row');
