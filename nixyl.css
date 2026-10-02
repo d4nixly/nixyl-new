@@ -1,74 +1,90 @@
-/* Position the hero section and right visual container */
+/* Hero Container Layout */
 .hero {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 80vh;
+  min-height: 85vh;
   padding: 4rem 8%;
-  background-color: #0d0d0d; /* Dark background */
+  background-color: #121212;
   overflow: hidden;
 }
 
+/* Right side container for assets */
 .hero-visual {
   position: relative;
   width: 50%;
-  height: 400px;
+  height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Remove white backgrounds from non-transparent images */
-.hero-visual img.art {
-  position: absolute;
-  mix-blend-mode: screen; /* Blends out pure white (#FFFFFF) background */
-  filter: contrast(1.1) brightness(0.9); /* Enhances depth on dark backgrounds */
-  max-width: 260px;
-  height: auto;
-  object-fit: contain;
-}
-
-/* Layout positions for the individual items */
-.hero-visual .art-hat {
-  top: 10%;
-  right: 15%;
-  z-index: 3;
-  width: 220px;
-}
-
-.hero-visual .art-coil {
-  bottom: 10%;
-  left: 10%;
-  z-index: 2;
-  width: 180px;
-}
-
-.hero-visual .art-trophy {
-  bottom: 15%;
-  right: 5%;
-  z-index: 1;
-  width: 160px;
-}
-
-.hero-visual .art-logo {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0.15;
-  width: 350px;
-  z-index: 0;
-}
-
-/* Subtle background glow effect */
+/* Warm Red/Orange Spotlight Background Glow */
 .art-floor {
   position: absolute;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(210, 140, 90, 0.25) 0%, rgba(13, 13, 13, 0) 70%);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(140, 25, 25, 0.65) 0%, rgba(90, 15, 15, 0.3) 45%, transparent 70%);
+  bottom: -10%;
+  right: 10%;
+  border-radius: 50%;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
+}
+
+/* Base style for all floating 3D assets */
+.hero-visual img.art {
+  position: absolute;
+  mix-blend-mode: multiply; /* Erases solid white backgrounds cleanly */
+  filter: contrast(1.08) brightness(0.95);
+  height: auto;
+  pointer-events: none;
+}
+
+/* Centerpiece: Bloxy Trophy */
+.hero-visual .art-trophy {
+  z-index: 5;
+  width: 230px;
+  bottom: 5%;
+  right: 25%;
+  transform: rotate(-2deg);
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+}
+
+/* Top Left: Roblox Cube/Logo */
+.hero-visual .art-logo {
+  z-index: 4;
+  width: 85px;
+  top: 12%;
+  left: 20%;
+  transform: rotate(-12deg);
+}
+
+/* Middle Left: Pink Speed Coil */
+.hero-visual .art-coil {
+  z-index: 4;
+  width: 110px;
+  top: 42%;
+  left: 18%;
+  transform: rotate(-15deg);
+}
+
+/* Top Right: Valkyrie / Helmet */
+.hero-visual .art-hat {
+  z-index: 4;
+  width: 120px;
+  top: 15%;
+  right: 10%;
+  transform: rotate(8deg);
+}
+
+/* Middle Right: Crown / Dominus / Accessory */
+.hero-visual img[src*="172942"], 
+.hero-visual img[src*="171021"] {
+  z-index: 3;
+  width: 110px;
+  top: 48%;
+  right: 8%;
+  transform: rotate(12deg);
 }
